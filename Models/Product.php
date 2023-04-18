@@ -17,7 +17,7 @@ class Product
     public function __construct(string $_name, float $_price, $_animal, string $_img)
     {
         $this->name = $_name;
-        $this->price = $_price;
+        $this->set_price($_price);
         $this->animal = $_animal;
         $this->image = $_img;
     }

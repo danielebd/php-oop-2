@@ -1,5 +1,11 @@
 <?php 
+
+require_once __DIR__.'/../Traits/Name.php';
+
 class Animal {
+    
+    use Name;
+
     private $name;
     private $icon;
 
@@ -9,13 +15,6 @@ class Animal {
         $this->icon = $_icon;
     }
 
-    //NAME
-    public function get_name(){
-        return $this->name; 
-    }
-    public function set_name($_name){
-        $this->name = $_name; 
-    }
 
     //ICON
     public function get_icon(){

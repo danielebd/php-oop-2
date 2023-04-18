@@ -22,7 +22,7 @@ class Toy extends Product{
     public function get_dimension(){
         return $this->dimension; 
     }
-    public function set_name($_dimension){
+    public function set_dimension($_dimension){
         $this->dimension = $_dimension; 
     }
 }

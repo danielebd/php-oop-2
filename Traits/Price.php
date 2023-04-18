@@ -10,6 +10,11 @@ trait Price
     }
     public function set_price($_price)
     {
-        $this->price = $_price;
+        {
+            if($_price <= 0){
+                throw new Exception('cifra troppo bassa');
+            }
+            $this->price = $_price;
+        }
     }
 }
