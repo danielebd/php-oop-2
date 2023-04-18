@@ -1,10 +1,16 @@
 <?php
 
+require_once __DIR__.'/../Traits/Name.php';
+require_once __DIR__.'/../Traits/Price.php';
+require_once __DIR__.'/../Traits/Img.php';
 class Product
 {    
     
-    private $name;    
-    private $price;
+    use Name;
+    use Price;
+    use Image;
+   
+
     private $animal;
     private $image;
     
@@ -16,23 +22,6 @@ class Product
         $this->image = $_img;
     }
 
-
-    //NAME
-    public function get_name(){
-        return $this->name; 
-    }
-    public function set_name($_name){
-        $this->name = $_name; 
-    }
-
-    //PREZZO
-    public function get_price(){
-        return $this->price; 
-    }
-    public function set_price($_price){
-        $this->price = $_price; 
-    }
-
     //ANIMALE
     public function get_animal(){
         return $this->animal; 
@@ -41,12 +30,5 @@ class Product
         $this->animal = $_animal; 
     }
 
-    //IMMAGINE
-    public function get_image(){
-        return $this->image; 
-    }
-    public function set_image($_image){
-        $this->image = $_image; 
-    }
 }
 

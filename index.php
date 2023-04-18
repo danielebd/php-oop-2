@@ -20,7 +20,7 @@ $cartucce = new Acessorie('Cartucce Filtranti', 2.29, $category_fish, '#', 'Mate
 $kong = new Toy('Kong Classic', 184.89, $category_dog, '#', 'Galleggia e rimbalza', '8,5 cm x 10 cm');
 $mouse = new Toy('Topini di peluche Trixie', 184.89, $category_cat, '#', 'Morbido con cordino di corda', '8,5 cm x 10 cm');
 
-var_dump($royal, $almo, $almocat);
+var_dump($royal);
 
 $products = [
     $royal,
