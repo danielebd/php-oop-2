@@ -7,20 +7,31 @@ require_once __DIR__ . ('/Models/Animal.php');
 
 
 $category_dog = new Animal('Dog', '<i class="fa-solid fa-dog"></i>');
-$category_cat = new Animal('Dog', '<i class="fa-solid fa-cat"></i>');
-$category_fish = new Animal('Dog', '<i class="fa-solid fa-dove"></i>');
-$category_bird = new Animal('Dog', '<i class="fa-solid fa-fish"></i>');
+$category_cat = new Animal('Cat', '<i class="fa-solid fa-cat"></i>');
+$category_fish = new Animal('Fish', '<i class="fa-solid fa-fish"></i>');
+$category_bird = new Animal('Bird', '<i class="fa-solid fa-dove"></i>');
 
-$royal = new Food('Royal Canin', 43.99, $category_dog, 'url', 545, 'prociutto, riso');
-$almo = new Food('Almo Nature Holistic', 44.99, $category_dog, 'url', 600, 'manzo, cereali');
-$almocat = new Food('Almo Nature Cat', 34.99, $category_cat, 'url', 400, 'tonno, pollo, prociutto');
-$giuppy = new Food('Mangime per Pesci Giuppy', 2.94, $category_fish, 'url', 30, 'Pesci e sottoprodotti dei pesci, Cereali, Lieviti, Alghe');
-$voliera = new Acessorie('Voliera Wilma in Legno', 184.89, $category_bird, 'url', 'Legno', 'L 83 x P 67 x H 153 cm');
-$cartucce = new Acessorie('Cartucce Filtranti', 2.29, $category_fish, 'url', 'Materiale espanso');
-$voliera = new Acessorie('Voliera Wilma in Legno', 184.89, $category_bird, 'url', 'Legno', 'L 83 x P 67 x H 153 cm');
-$voliera = new Acessorie('Voliera Wilma in Legno', 184.89, $category_bird, 'url', 'Legno', 'L 83 x P 67 x H 153 cm');
+$royal = new Food('Royal Canin', 43.99, $category_dog, '#', 545, 'prociutto, riso');
+$almo = new Food('Almo Nature Holistic', 44.99, $category_dog, '#', 600, 'manzo, cereali');
+$almocat = new Food('Almo Nature Cat', 34.99, $category_cat, '#', 400, 'tonno, pollo, prociutto');
+$giuppy = new Food('Mangime per Pesci Giuppy', 2.94, $category_fish, '#', 30, 'Pesci e sottoprodotti dei pesci, Cereali, Lieviti, Alghe');
+$voliera = new Acessorie('Voliera Wilma in Legno', 184.89, $category_bird, '#', 'Legno', 'L 83 x P 67 x H 153 cm');
+$cartucce = new Acessorie('Cartucce Filtranti', 2.29, $category_fish, '#', 'Materiale espanso');
+$kong = new Toy('Kong Classic', 184.89, $category_dog, '#', 'Galleggia e rimbalza', '8,5 cm x 10 cm');
+$mouse = new Toy('Topini di peluche Trixie', 184.89, $category_cat, '#', 'Morbido con cordino di corda', '8,5 cm x 10 cm');
 
 var_dump($royal, $almo, $almocat);
+
+$products = [
+    $royal,
+    $almo,
+    $almocat,
+    $giuppy,
+    $voliera,
+    $cartucce,
+    $kong,
+    $mouse
+]
 
 ?>
 
@@ -40,19 +51,36 @@ var_dump($royal, $almo, $almocat);
     <div class="container">
         <h1>Pets Shop</h1>
         <div class="row">
-            <div class="col-12">
+        <?php foreach($products as $product) :?>
+            <div class="col-3">
                 <div class="card" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">1</p>
-                        <p class="card-text">1</p>
-                        <p class="card-text">1</p>
-                        <p class="card-text">1</p>
-                        <p class="card-text">1</p>
+                        <h5 class="card-title"><?php echo $product->get_name()?></h5>
+                        <p class="card-text"></p>
+                        <p class="card-text">Prezzo: <?php echo $product->get_price()?>€</p>
+                        <p class="card-text"><?php echo $product->get_animal()->get_category()?></p>
+
+                        <?php if (method_exists($product, 'get_weigth')) :?>
+                        <p class="card-text">Peso netto: <?php echo $product->get_weigth();?>g</p>
+                        <?php endif ?>
+                        <?php if (method_exists($product, 'get_ingridient')) :?>
+                        <p class="card-text">Ingredienti: <?php echo $product->get_ingridient();?></p>
+                        <?php endif ?>
+                        <?php if (method_exists($product, 'get_material')) :?>
+                        <p class="card-text">Materiale: <?php echo $product->get_material();?></p>
+                        <?php endif ?>
+                        <?php if (method_exists($product, 'get_detail')) :?>
+                        <p class="card-text">Caratteristiche: <?php echo $product->get_detail();?></p>
+                        <?php endif ?>
+                        <?php if (method_exists($product, 'get_dimension')) :?>
+                        <p class="card-text">Dimensioni: <?php echo $product->get_dimension();?></p>
+                        <?php endif ?>
+                        
                     </div>
                 </div>
             </div>
+        <?php endforeach ?>
         </div>
     </div>
 </body>

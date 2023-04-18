@@ -9,4 +9,20 @@ class Toy extends Product{
         $this->detail = $_detail;
         $this->dimension = $_dimension;
     }
+
+    //DETAILS
+    public function get_detail(){
+        return $this->detail; 
+    }
+    public function set_detail($_detail){
+        $this->detail = $_detail; 
+    }
+
+    //DIMENSION
+    public function get_dimension(){
+        return $this->dimension; 
+    }
+    public function set_name($_dimension){
+        $this->dimension = $_dimension; 
+    }
 }

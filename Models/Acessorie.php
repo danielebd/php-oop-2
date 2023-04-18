@@ -10,4 +10,19 @@ class Acessorie extends Product {
         $this->dimension = $_dimension;
     }
 
+    //MATERIAL
+    public function get_material(){
+        return $this->material; 
+    }
+    public function set_material($_material){
+        $this->material = $_material; 
+    }
+
+    //DIMENSION
+    public function get_dimension(){
+        return $this->dimension; 
+    }
+    public function set_dimension($_dimension){
+        $this->dimension = $_dimension; 
+    }
 }
